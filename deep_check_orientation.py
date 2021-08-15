@@ -30,7 +30,6 @@ from iglovikov_helper_functions.utils.image_utils import load_rgb
 import matplotlib.pyplot as plt
 import numpy as np
 from pylab import imshow
-import pytesseract
 import torch
 
 
@@ -38,60 +37,12 @@ class check_orientation:
 
     def __init__(self):
 
-        # INICIANDO O MODELO
+        # INICIANDO O MODELO (RESNET)
         self.model = create_model("swsl_resnext50_32x4d")
         self.model.eval()
 
         # INICIANDO A INSTÂNCIA DE AUMENTO DE IMAGENS
         self.transform = albu.Compose([albu.Resize(height=224, width=224), albu.Normalize(p=1)], p=1)
-
-        # DEFININDO AS CONFIGURAÇÕES DO TESSERACT
-        self.tesseract_config_psm = 1
-        self.tesseract_lang = 'eng'
-
-
-    def realiza_ocr(self, imagem_rgb):
-
-        """
-
-            REALIZA A APLICAÇÃO DE OCR SOBRE UMA IMAGEM.
-            O OCR PERMITIRÁ TRANSCREVER A IMAGEM.
-            CONVERSÃO IMAGEM PARA TEXTO.
-
-
-            # Arguments
-                imagem_rgb                  - Required : Imagem para aplicação do ocr (Object)
-            # Returns
-                validador                   - Required : Validador de execução da função (Boolean)
-                texto                       - Required : Texto obtido (String)
-
-        """
-
-        # INICIANDO O VALIDADOR
-        validador = False
-
-        # INICIANDO A VARIÁVEL TEXTO
-        texto = ""
-
-        try:
-            # VERIFICANDO SE A LINGUAGEM SELECIONADA, ESTÁ DISPONÍVEL
-            lang_padrao = self.tesseract_lang
-
-            # VERIFICANDO A CONFIGURAÇÃO PSM
-            valor_config_psm = self.tesseract_config_psm
-            config_tesseract = 'tessdata --psm {}'.format(str(valor_config_psm))
-
-            # REALIZANDO O OCR SOBRE A IMAGEM
-            texto = pytesseract.image_to_string(imagem_rgb,
-                                                lang=lang_padrao,
-                                                config=config_tesseract)
-
-            validador = True
-
-        except Exception as ex:
-            print(ex)
-
-        return validador, texto
 
 
     @staticmethod
