@@ -31,7 +31,7 @@
 
 ## 💻 Sobre o projeto
 
-📷 Deep Check Orientation é um projeto que utiliza aprendizado profundo (deep learning) para verificação da orientação de uma imagem e rotação adequada da mesma. Ao ser enviada uma imagem (em qualquer formato), retorna-se o número de rotações necesárias e a imagem rotacionada corretamente.
+📷 **Deep Check Orientation** é um projeto que utiliza *aprendizado profundo (deep learning)* para **verificação da orientação de uma imagem** e **rotação adequada da mesma**. Ao ser enviada uma imagem (em qualquer formato), **retorna-se o número de rotações necesárias e a imagem rotacionada corretamente**.
 
 Os passos realizados são:
 1) Leitura da imagem em rgb
@@ -40,9 +40,9 @@ Os passos realizados são:
 4) Obtenção das predições de orientação da imagem
 5) Cálculo do número de rotações necessárias para orientação correta da imagem.
 
-Projeto desenvolvido durante utilizando a rede **swsl_resnext50_32x4d** oferecida pelo [Ternaus].
+Projeto desenvolvido utilizando a rede **swsl_resnext50_32x4d** oferecida pelo [Ternaus].
 
-## 🛠 Tecnologias
+## 🛠  Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
@@ -53,18 +53,21 @@ As seguintes ferramentas foram usadas na construção do projeto:
 1. pip install requirements.txt
 2. Abrir a linha de comando (cmd) e digitar: python main.py <imagem_para_rotacionar>. 
 Ex: python main.py "..\allPd.jpg".
-3. A rede neural (**swsl_resnext50_32x4d**) é baixada e armazenada na primeira execução do projeto e após isso, utiliza-se a rede já baixada. Caso queira baixar manualmente e referenciar no projeto, deve-se realizar os passos 4 e 5.
-4. Download usando o link de pesos na seção de **Modelo pré-treinado** desse README. Após o download, extrair a pasta.
-5. Colocar o arquivo zipado e o extraído em uma pasta qualquer.
-6. Criar uma variável de ambiente (TORCH_HOME = <caminho_rede_neural>.
+3. A rede neural (**swsl_resnext50_32x4d**) é baixada e armazenada na primeira execução do projeto e após isso, utiliza-se a rede já baixada. 
+
+Caso queira baixar manualmente e referenciar no projeto, deve-se realizar os seguintes passos.
+
+ 1. Download usando o link de pesos na seção de **Modelo pré-treinado** desse README. Após o download, extrair a pasta.
+ 2. Colocar o arquivo zipado e o extraído em uma pasta qualquer.
+ 3. Criar uma variável de ambiente (TORCH_HOME = <caminho_rede_neural>.
 Ex: TORCH_HOME = C:\Users\EmersonRafael\Desktop\DEEP_CHECK_ORIENTATION\model_dir_check_orientation
 
-### Pré-requisitos
+## ➊ Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas (O download pode ser realizado pela própria página do Python ou Anaconda):
 [Python](https://www.anaconda.com/products/individual).
 
-### Modelo pré-treinado
+## 🧠 Modelo pré-treinado
 Modelo foi treinado por [Ternaus] usando o [OpenImages dataset](https://storage.googleapis.com/openimages/web/index.html).
 
 | Modelo        | Acurácia de validação | Arquivo de configuração  | Pesos |
