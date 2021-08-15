@@ -8,7 +8,7 @@
 </h4>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/tgmarinho/nlw1?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/emersonrafaels/deep_check_orientation?color=%2304D361">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/emersonrafaels/deep_check_orientation">
 
@@ -53,15 +53,27 @@ As seguintes ferramentas foram usadas na construção do projeto:
 1. pip install requirements.txt
 2. Abrir a linha de comando (cmd) e digitar: python main.py <imagem_para_rotacionar>. 
 Ex: python main.py "..\allPd.jpg".
+3. A rede neural (**swsl_resnext50_32x4d**) é baixada e armazenada na primeira execução do projeto e após isso, utiliza-se a rede já baixada. Caso queira baixar manualmente e referenciar no projeto, deve-se realizar os passos 4 e 5.
+4. Download usando o link de pesos na seção de **Modelo pré-treinado** desse README. Após o download, extrair a pasta.
+5. Colocar o arquivo zipado e o extraído em uma pasta qualquer.
+6. Criar uma variável de ambiente (TORCH_HOME = <caminho_rede_neural>.
+Ex: TORCH_HOME = C:\Users\EmersonRafael\Desktop\DEEP_CHECK_ORIENTATION\model_dir_check_orientation
 
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas (O download pode ser realizado pela própria página do Python ou Anaconda):
 [Python](https://www.anaconda.com/products/individual).
 
+### Modelo pré-treinado
+Modelo foi treinado por [Ternaus] usando o [OpenImages dataset](https://storage.googleapis.com/openimages/web/index.html).
+
+| Modelo        | Acurácia de validação | Arquivo de configuração  | Pesos |
+| ------------- |:--------------------:| :------------:| :------: |
+| swsl_resnext50_32x4d|0.9128| [Link](check_orientation/configs/2020-11-16.yaml)| [Link](https://github.com/ternaus/check_orientation/releases/download/v0.0.3/2020-11-16_resnext50_32x4d.zip)|
+
 ## 📝 Licença
 
-Este projeto esta sobe a licença MIT.
+Este projeto está sob a licença MIT.
 
 Feito com ❤️ por Emerson Rafael 👋🏽 [Entre em contato!](https://www.linkedin.com/in/emerson-rafael/)
 
