@@ -21,19 +21,20 @@
 
 
 from inspect import stack
+import sys
 
 import albumentations as albu
 from check_orientation.pre_trained_models import create_model
-import cv2
 from iglovikov_helper_functions.dl.pytorch.utils import tensor_from_rgb_image
 from iglovikov_helper_functions.utils.image_utils import load_rgb
-import matplotlib.pyplot as plt
 import numpy as np
-from pylab import imshow
 import torch
+
+import utils.image_view as image_view_functions
 
 
 class check_orientation:
+
 
     def __init__(self):
 
@@ -55,7 +56,7 @@ class check_orientation:
             # Arguments
                 caminho_imagem       - Required : Caminho da imagem a ser lida (String)
             # Returns
-                img                  - Required : Imagem após leitura (Object)
+                img                  - Required : Imagem após leitura (Array)
 
         """
 
@@ -69,72 +70,6 @@ class check_orientation:
             print(ex)
 
         return img
-
-
-    @staticmethod
-    def view_image(image):
-
-        """
-
-            FUNÇÃO PARA VISUALIZAÇÃO DE UMA IMAGEM.
-            A VISUALIZAÇÃO UTILIZA O WINDOWFRAME DO OPENCV - FUNÇÃO IMSHOW.
-
-
-            # Arguments
-                image                - Required : Imagem a ser visualizada (Object)
-                window_name          - Required : Nome que será usada como
-                                                  título da janela de exibição
-                                                  da imagem (String)
-            # Returns
-
-        """
-
-        try:
-            # MOSTRANDO IMAGEM ATUAL
-            imshow(image)
-        except Exception as ex:
-            print(ex)
-
-
-    @staticmethod
-    def view_image_cv2(image, window_name="IMAGEM ATUAL"):
-
-        """
-
-            FUNÇÃO PARA VISUALIZAÇÃO DE UMA IMAGEM.
-            A VISUALIZAÇÃO UTILIZA O WINDOWFRAME DO OPENCV - FUNÇÃO IMSHOW.
-
-            # Arguments
-                image                - Required : Imagem a ser visualizada (Object)
-                window_name          - Required : Nome que será usada como
-                                                  título da janela de exibição
-                                                  da imagem (String)
-            # Returns
-
-        """
-
-        try:
-            # MOSTRANDO IMAGEM ATUAL
-            cv2.imshow(window_name, image)
-
-            # AGUARDA A AÇÃO DO USUÁRIO DE FECHAR A JANELA DE IMAGEM
-            cv2.waitKey(0)
-
-            # DESTRUINDO A JANELA DE IMAGEM
-            cv2.destroyAllWindows()
-        except Exception as ex:
-            print(ex)
-
-
-    @staticmethod
-    def view_rotations_image(image):
-
-        try:
-            for k in [0, 1, 2, 3]:
-                image_rotate = np.rot90(image, k)
-                check_orientation.view_image(image_rotate)
-        except Exception as ex:
-            print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
 
 
     def pipeline_augmentation(self, image):
@@ -182,6 +117,8 @@ class check_orientation:
             with torch.no_grad():
                 prediction = self.model(torch.stack(images_albu)).numpy()
 
+            # FORMATANDO AS PREDIÇÕES PARA FICAREM APENAS COM DUAS CASAS DECIMAIS
+            # UTILIZANDO LIST COMPREHESION
             for tx in prediction:
                 prediction_formated.append([round(value, 2) for value in tx])
         except Exception as ex:
@@ -208,10 +145,10 @@ class check_orientation:
         image = check_orientation.realiza_leitura_imagem(imagem)
 
         # VISUALIZANDO A IMAGEM
-        # check_orientation.view_image(image)
+        image_view_functions.view_image(image)
 
         # VISUALIZANDO ROTAÇÕES DA IMAGEM
-        # check_orientation.view_rotations_image(image)
+        image_view_functions.view_rotations_image(image)
 
         # OBTENDO AS PREDIÇÕES DO MODELO
         predictions = check_orientation.orchestra_predictions(self, image)
@@ -219,9 +156,25 @@ class check_orientation:
         return image, predictions
 
 
-IMAGE_FILE_LOCATION = r'C:\Users\Emerson\Desktop\UFABC\Cursos\Python\OPENCV\RG\DanielCoelho.jpg'
+if __name__ == '__main__':
 
-orquestrador = check_orientation()
-image, predictions_check_orientation = orquestrador.orchesta_model(IMAGE_FILE_LOCATION)
+    try:
+        # OBTENDO O CAMINHO DA IMAGEM ENVIADA PELO USUÁRIO
+        IMAGE_FILE_LOCATION = sys.argv[1]
 
-print(predictions_check_orientation)
+        orquestrador = check_orientation()
+        image, predictions_check_orientation = orquestrador.orchesta_model(IMAGE_FILE_LOCATION)
+
+        print("AS PREDIÇÕES DO MODELO SÃO: {}"
+              "\nPARA 0º: {}"
+              "\nPARA 90º: {}"
+              "\nPARA 180º: {}"
+              "\nPARA 270º: {}".format(predictions_check_orientation,
+                                       predictions_check_orientation[0],
+                                       predictions_check_orientation[1],
+                                       predictions_check_orientation[2],
+                                       predictions_check_orientation[3]))
+
+
+    except Exception as ex:
+        print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
