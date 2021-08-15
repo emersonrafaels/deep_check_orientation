@@ -14,6 +14,7 @@
     # Arguments
         caminho_imagem          - Required : Imagem para verificação da orientação (String)
     # Returns
+        predictions             - Required : Predições do modelo para 0º, 90º. 180º, 270º (List)
         numero_rotacoes         - Required : Número de rotações necessárias (Integer)
         imagem_rotacionada      - Required : Imagem após aplicação do número de rotações necessárias (PIL)
 
@@ -34,6 +35,28 @@ import utils.image_view as image_view_functions
 
 
 class check_orientation:
+
+    """
+
+        UTILIZAÇÃO DE APRENDIZADO PROFUNDO (DEEP LEARNING) PARA VERIFICAÇÃO DA ORIENTAÇÃO DE UMA IMAGEM
+        E ROTAÇÃO ADEQUADA DA MESMA. AO SER ENVIADA UMA IMAGEM (EM QUALQUER FORMATO),
+        RETORNA-SE O NÚMERO DE ROTAÇÕES NECESÁRIAS E A IMAGEM ROTACIONADA CORRETAMENTE.
+
+        OS PASSOS REALIZADOS SÃO:
+        1) LEITURA DA IMAGEM EM RGB
+        2) PIPELINE DE AUMENTO DE IMAGEM USANDO ALBUMENTATIONS (CLASSE: COMPOSE)
+        3) REALIZAÇÃO DA PREDIÇÃO USANDO UMA REDE NEURAL DO TIPO RESNET
+        4) OBTENÇÃO DAS PREDIÇÕES DE ORIENTAÇÃO DA IMAGEM
+        5) CALCULO DO NÚMERO DE ROTAÇÕES NECESSÁRIAS PARA ORIENTAÇÃO CORRETA DA IMAGEM.
+
+        # Arguments
+            caminho_imagem          - Required : Imagem para verificação da orientação (String)
+        # Returns
+            predictions             - Required : Predições do modelo para 0º, 90º. 180º, 270º (List)
+            numero_rotacoes         - Required : Número de rotações necessárias (Integer)
+            imagem_rotacionada      - Required : Imagem após aplicação do número de rotações necessárias (PIL)
+
+    """
 
 
     def __init__(self):

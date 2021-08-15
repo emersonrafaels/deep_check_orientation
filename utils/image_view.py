@@ -74,7 +74,7 @@ def view_rotations_image(image):
     """
 
         FUNÇÃO PARA VISUALIZAÇÃO DE UMA IMAGEM
-        ROTACIONANDO EM 90º, 180º, 270º E 360º.
+        ROTACIONANDO EM 0º, 90º. 180º, 270º.
         A VISUALIZAÇÃO UTILIZA A FUNÇÃO - VIEW_IMAGE
 
         # Arguments
