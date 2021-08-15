@@ -31,7 +31,7 @@
 
 ## 💻 Sobre o projeto
 
-📷 Deep Check Orientation é um projeto que utiliza aprendizado profundo (deep learning) para verificação da orientação de uma imagem e rotação adequada da mesma. ao ser enviada uma imagem (em qualquer formato), retorna-se o número de rotações necesárias e a imagem rotacionada corretamente.
+📷 Deep Check Orientation é um projeto que utiliza aprendizado profundo (deep learning) para verificação da orientação de uma imagem e rotação adequada da mesma. Ao ser enviada uma imagem (em qualquer formato), retorna-se o número de rotações necesárias e a imagem rotacionada corretamente.
 
 Os passos realizados são:
 1) Leitura da imagem em rgb
