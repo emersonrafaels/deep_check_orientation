@@ -22,7 +22,6 @@
 
 
 from inspect import stack
-import sys
 
 import albumentations as albu
 from check_orientation.pre_trained_models import create_model
@@ -151,27 +150,3 @@ class check_orientation:
         predictions = check_orientation.orchestra_predictions(self, image)
 
         return image, predictions
-
-
-if __name__ == '__main__':
-
-    try:
-        # OBTENDO O CAMINHO DA IMAGEM ENVIADA PELO USUÁRIO
-        IMAGE_FILE_LOCATION = sys.argv[1]
-
-        orquestrador = check_orientation()
-        image, predictions_check_orientation = orquestrador.orchesta_model(IMAGE_FILE_LOCATION)
-
-        print("AS PREDIÇÕES DO MODELO SÃO: {}"
-              "\nPARA 0º: {}"
-              "\nPARA 90º: {}"
-              "\nPARA 180º: {}"
-              "\nPARA 270º: {}".format(predictions_check_orientation,
-                                       predictions_check_orientation[0],
-                                       predictions_check_orientation[1],
-                                       predictions_check_orientation[2],
-                                       predictions_check_orientation[3]))
-
-
-    except Exception as ex:
-        print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
