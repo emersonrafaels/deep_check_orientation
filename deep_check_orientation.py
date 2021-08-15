@@ -27,10 +27,10 @@ import sys
 import albumentations as albu
 from check_orientation.pre_trained_models import create_model
 from iglovikov_helper_functions.dl.pytorch.utils import tensor_from_rgb_image
-from iglovikov_helper_functions.utils.image_utils import load_rgb
 import numpy as np
 import torch
 
+import utils.image_read as image_read_functions
 import utils.image_view as image_view_functions
 
 
@@ -67,32 +67,6 @@ class check_orientation:
 
         # INICIANDO A INSTÂNCIA DE AUMENTO DE IMAGENS
         self.transform = albu.Compose([albu.Resize(height=224, width=224), albu.Normalize(p=1)], p=1)
-
-
-    @staticmethod
-    def realiza_leitura_imagem(caminho_imagem):
-
-        """
-
-            FUNÇÃO PARA LEITURA DE UMA IMAGEM.
-
-            # Arguments
-                caminho_imagem       - Required : Caminho da imagem a ser lida (String)
-            # Returns
-                img                  - Required : Imagem após leitura (Array)
-
-        """
-
-        # INICIANDO O OBJETO DA IMAGEM
-        img = None
-
-        try:
-            # A LEITURA É FEITA EM FORMATO RGB
-            img = load_rgb(caminho_imagem)
-        except Exception as ex:
-            print(ex)
-
-        return img
 
 
     def pipeline_augmentation(self, image):
@@ -165,7 +139,7 @@ class check_orientation:
     def orchesta_model(self, imagem):
 
         # REALIZANDO A LEITURA DA IMAGEM
-        image = check_orientation.realiza_leitura_imagem(imagem)
+        image = image_read_functions.read_image_rgb(imagem)
 
         # VISUALIZANDO A IMAGEM
         image_view_functions.view_image(image)
