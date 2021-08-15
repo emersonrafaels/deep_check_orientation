@@ -6,7 +6,6 @@
         object                  - Required : Imagem para leitura/visualização (String | Object)
     # Returns
 
-
 """
 
 
