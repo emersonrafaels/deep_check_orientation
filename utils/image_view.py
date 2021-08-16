@@ -14,10 +14,10 @@ from inspect import stack
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-from pylab import imshow
+from pylab import imshow, show, title
 
 
-def view_image(image):
+def view_image(image, window_name=""):
 
     """
 
@@ -27,6 +27,9 @@ def view_image(image):
 
         # Arguments
             image                - Required : Imagem a ser visualizada (Object)
+            window_name          - Optional : Nome que será usada como
+                                              título da janela de exibição
+                                              da imagem (String)
 
         # Returns
 
@@ -35,6 +38,8 @@ def view_image(image):
     try:
         # MOSTRANDO IMAGEM ATUAL
         imshow(image)
+        title(window_name)
+        show()
     except Exception as ex:
         print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
 
@@ -48,7 +53,7 @@ def view_image_cv2(image, window_name="IMAGEM ATUAL"):
 
         # Arguments
             image                - Required : Imagem a ser visualizada (Object)
-            window_name          - Required : Nome que será usada como
+            window_name          - Optional : Nome que será usada como
                                               título da janela de exibição
                                               da imagem (String)
         # Returns
