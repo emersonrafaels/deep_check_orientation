@@ -25,6 +25,7 @@ from inspect import stack
 
 import albumentations as albu
 from check_orientation.pre_trained_models import create_model
+from dynaconf import settings
 from iglovikov_helper_functions.dl.pytorch.utils import tensor_from_rgb_image
 import numpy as np
 import torch
@@ -61,11 +62,14 @@ class check_orientation:
     def __init__(self):
 
         # INICIANDO O MODELO (RESNET)
-        self.model = create_model("swsl_resnext50_32x4d")
+        self.model = create_model(settings.MODEL_NAME)
         self.model.eval()
 
         # INICIANDO A INSTÂNCIA DE AUMENTO DE IMAGENS
-        self.transform = albu.Compose([albu.Resize(height=224, width=224), albu.Normalize(p=1)], p=1)
+        self.transform = albu.Compose([albu.Resize(height=settings.ALBUMENTATIONS_HEIGHT,
+                                                   width=settings.ALBUMENTATIONS_WIDHT),
+                                       albu.Normalize(p=settings.ALBUMENTATIONS_NORMALIZE)],
+                                      p=settings.ALBUMENTATIONS_NORMALIZE)
 
 
     def pipeline_augmentation(self, image):
