@@ -15,8 +15,8 @@
         caminho_imagem          - Required : Imagem para verificação da orientação (String)
     # Returns
         predictions             - Required : Predições do modelo para 0º, 90º. 180º, 270º (List)
-        numero_rotacoes         - Required : Número de rotações necessárias (Integer)
-        imagem_rotacionada      - Required : Imagem após aplicação do número de rotações necessárias (PIL)
+        number_rotate           - Required : Número de rotações necessárias (Integer)
+        image_correct_rotate    - Required : Imagem após aplicação do número de rotações necessárias (PIL)
 
 """
 
@@ -53,8 +53,8 @@ class check_orientation:
             caminho_imagem          - Required : Imagem para verificação da orientação (String)
         # Returns
             predictions             - Required : Predições do modelo para 0º, 90º. 180º, 270º (List)
-            numero_rotacoes         - Required : Número de rotações necessárias (Integer)
-            imagem_rotacionada      - Required : Imagem após aplicação do número de rotações necessárias (PIL)
+            number_rotate           - Required : Número de rotações necessárias (Integer)
+            image_correct_rotate    - Required : Imagem após aplicação do número de rotações necessárias (PIL)
 
     """
 
@@ -83,10 +83,10 @@ class check_orientation:
             ESSA FUNÇÃO É USADA NESSA FUNÇÃO PARA APLICAÇÃO NA IMAGEM ATUAL.
 
             # Arguments
-                image                - Required : Imagem a ser aumentada (Object)
+                image                - Required : Imagem para ser aumentada (Array)
 
             # Returns
-                temp_albu            - Required :
+                temp_albu            - Required : Imagens após a transformação (Array)
 
         """
 
@@ -106,6 +106,27 @@ class check_orientation:
 
 
     def get_predictions(self, images_albu):
+
+        """
+
+            FUNÇÃO RESPONSÁVEL POR UTILIZAR A REDE NEURAL PARA PREDIÇÃO DA ROTAÇÃO.
+
+            A PREDIÇÃO É FEITA UTILIZANDO UMA SOFTMAX DE CLASSIFICAÇÃO (POSSUINDO 4 CLASSES)
+            AS 4 CLASSES SÃO: 0º, 90º. 180º, 270º.
+
+            A FUNÇÃO RETORNA QUATRO PREDIÇÕES, POIS:
+            1) RECEBE A IMAGEM DA FORMA ORIGINAL - OBTÉM-SE A PREDIÇÃO NELA
+            2) ROTACIONA A IMAGEM EM 90º - OBTÉM-SE A PREDIÇÃO NELA
+
+            E O PROCESSO É REPETIDO POR 4 VEZES.
+
+            # Arguments
+                images_albu             - Required : Imagem após ser aumentada (Array)
+
+            # Returns
+                prediction_formated     - Required : Predições para a imagem rotacionada (List)
+
+        """
 
         # INICIANDO A VARIÁVEL QUE ARMAZENARÁ AS PREDIÇÕES
         prediction = []
@@ -127,6 +148,55 @@ class check_orientation:
         return prediction_formated
 
 
+    @staticmethod
+    def get_number_rotations(predictions):
+
+        """
+
+            OBTÉM O NÚMERO DE ROTAÇÕES NECESSÁRIAS COM BASE NAS PREDIÇÕES.
+
+            # Arguments
+                predictions             - Required : Predições para a imagem rotacionada (List)
+
+            # Returns
+                rotations               - Required : Número de rotações necesssárias (Integer)
+
+        """
+
+        # INICIANDO A VARIÁVEL QUE ARMAZENARÁ O NÚMERO DE ROTAÇÕES NECESSÁRIAS
+        rotations = 0
+
+        try:
+            rotations = [value[2] for idx, value in enumerate(predictions)].index(
+                max([value[2] for idx, value in enumerate(predictions)])) + 2
+        except Exception as ex:
+            print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
+
+        return rotations
+
+
+    @staticmethod
+    def get_image_correct_orientation(image, rotations):
+
+        """
+
+            REALIZA A ROTAÇÃO DA IMAGEM, DE ACORDO COM O NÚMERO DE ROTAÇÕES NECESSÁRIAS.
+
+            # Arguments
+                image                  - Required : Imagem para verificação da orientação (Array)
+                rotations              - Required : Número de rotações necesssárias (Integer)
+
+            # Returns
+                image                  - Required : Imagem orientada corretamente (Array)
+
+        """
+
+        try:
+            return np.rot90(image, rotations)
+        except Exception as ex:
+            return image
+
+
     def orchestra_predictions(self, image):
 
         # REALIZANDO O AUMENTO DAS IMAGENS (AUGMENTATION)
@@ -135,8 +205,15 @@ class check_orientation:
         # OBTENDO AS PREDICTIONS
         predictions = check_orientation.get_predictions(self, images_albu)
 
-        # RETORNANDO AS PREDICTIONS
-        return predictions
+        # OBTENDO O NÚMERO DE ROTAÇÕES
+        number_rotate = check_orientation.get_number_rotations(predictions)
+
+        # ORIENTANDO A IMAGEM CORRETAMENTE
+        image_correct_orientation = check_orientation.get_image_correct_orientation(image, number_rotate)
+
+        # RETORNANDO AS PREDICTIONS, NÚMERO DE ROTAÇÕES NECESSÁRIAS
+        # E IMAGEM ROTACIONADA CORRETAMENTE
+        return predictions, number_rotate, image_correct_orientation
 
 
     def orchesta_model(self, imagem):
@@ -145,12 +222,12 @@ class check_orientation:
         image = image_read_functions.read_image_rgb(imagem)
 
         # VISUALIZANDO A IMAGEM
-        image_view_functions.view_image(image)
+        image_view_functions.view_image(image, window_name="IMAGEM ORIGINAL")
 
         # VISUALIZANDO ROTAÇÕES DA IMAGEM
-        image_view_functions.view_rotations_image(image)
+        #image_view_functions.view_rotations_image(image)
 
         # OBTENDO AS PREDIÇÕES DO MODELO
-        predictions = check_orientation.orchestra_predictions(self, image)
+        predictions, number_rotate, image_correct_orientation = check_orientation.orchestra_predictions(self, image)
 
-        return image, predictions
+        return predictions, number_rotate, image_correct_orientation

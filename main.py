@@ -9,14 +9,14 @@
     2) PIPELINE DE AUMENTO DE IMAGEM USANDO ALBUMENTATIONS (CLASSE: COMPOSE)
     3) REALIZAÇÃO DA PREDIÇÃO USANDO UMA REDE NEURAL DO TIPO RESNET
     4) OBTENÇÃO DAS PREDIÇÕES DE ORIENTAÇÃO DA IMAGEM
-    5) CÁLCULO DO NÚMERO DE ROTAÇÕES NECESSÁRIAS PARA ORIENTAÇÃO CORRETA DA IMAGEM.
+    5) CALCULO DO NÚMERO DE ROTAÇÕES NECESSÁRIAS PARA ORIENTAÇÃO CORRETA DA IMAGEM.
 
     # Arguments
         caminho_imagem          - Required : Imagem para verificação da orientação (String)
     # Returns
         predictions             - Required : Predições do modelo para 0º, 90º. 180º, 270º (List)
-        numero_rotacoes         - Required : Número de rotações necessárias (Integer)
-        imagem_rotacionada      - Required : Imagem após aplicação do número de rotações necessárias (PIL)
+        number_rotate           - Required : Número de rotações necessárias (Integer)
+        image_correct_rotate    - Required : Imagem após aplicação do número de rotações necessárias (PIL)
 
 """
 
@@ -25,6 +25,7 @@ from inspect import stack
 import sys
 
 from deep_check_orientation import check_orientation
+from utils.image_view import view_image
 
 
 if __name__ == '__main__':
@@ -34,7 +35,7 @@ if __name__ == '__main__':
         IMAGE_FILE_LOCATION = sys.argv[1]
 
         orquestrador = check_orientation()
-        image, predictions_check_orientation = orquestrador.orchesta_model(IMAGE_FILE_LOCATION)
+        predictions_check_orientation, number_rotations, image_correct_orientation = orquestrador.orchesta_model(IMAGE_FILE_LOCATION)
 
         print("AS PREDIÇÕES DO MODELO SÃO: {}"
               "\nPARA 0º: {}"
@@ -45,6 +46,11 @@ if __name__ == '__main__':
                                        predictions_check_orientation[1],
                                        predictions_check_orientation[2],
                                        predictions_check_orientation[3]))
+
+        print("NÚMERO DE ROTAÇÕES NECESSÁRIAS: {} ROTAÇÕES".format(number_rotations))
+
+        # VISUALIZANDO A IMAGEM ROTACIONADA CORRETAMENTE
+        view_image(image_correct_orientation, window_name="IMAGEM ROTACIONADA")
 
 
     except Exception as ex:
