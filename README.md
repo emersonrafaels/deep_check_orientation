@@ -60,7 +60,7 @@ Caso queira baixar manualmente e referenciar no projeto, deve-se realizar os seg
 
  1. Download usando o link de pesos na seção de **Modelo pré-treinado** desse README. Após o download, extrair a pasta.
  2. Colocar o arquivo zipado e o extraído em uma pasta qualquer.
- 3. Criar uma variável de ambiente: **TORCH_HOME = caminho_rede_neural**.
+ 3. Criar uma variável de ambiente: **TORCH_HOME = caminho_rede_neural**.<br>
 Ex: TORCH_HOME = C:\Users\EmersonRafael\Desktop\DEEP_CHECK_ORIENTATION\model_dir_check_orientation
 
 ## ➊ Pré-requisitos
