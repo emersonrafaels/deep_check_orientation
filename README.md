@@ -79,7 +79,7 @@ Modelo foi treinado por [Ternaus] usando o [OpenImages dataset](https://storage.
 
 Este projeto está sob a licença MIT.
 
-Feito com ❤️ por Emerson Rafael 👋🏽 [Entre em contato!](https://www.linkedin.com/in/emerson-rafael/)
+Feito com ❤️ por **Emerson Rafael** 👋🏽 [Entre em contato!](https://www.linkedin.com/in/emerson-rafael/)
 
 [Ternaus]: https://github.com/ternaus/check_orientation
 [Python]: https://www.python.org/downloads/
