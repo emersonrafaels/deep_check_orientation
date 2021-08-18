@@ -38,6 +38,6 @@ def read_image_rgb(caminho_imagem):
         # A LEITURA É FEITA EM FORMATO RGB
         img = load_rgb(caminho_imagem)
     except Exception as ex:
-        print(ex)
+        print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
 
     return img

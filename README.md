@@ -51,7 +51,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## 🚀 Como executar o projeto
 
-1. pip install requirements.txt
+1. pip install -r requirements.txt
 2. Abrir a linha de comando (cmd) e digitar: python main.py <imagem_para_rotacionar>. 
 Ex: python main.py "..\allPd.jpg".
 3. A rede neural (**swsl_resnext50_32x4d**) é baixada e armazenada na primeira execução do projeto e após isso, utiliza-se a rede já baixada. 
