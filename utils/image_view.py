@@ -45,7 +45,7 @@ def view_image(image, window_name=""):
         title(window_name)
         show()
     except Exception as ex:
-        print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
+        print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
 
 
 def view_image_cv2(image, window_name="IMAGEM ATUAL"):
@@ -74,7 +74,7 @@ def view_image_cv2(image, window_name="IMAGEM ATUAL"):
         # DESTRUINDO A JANELA DE IMAGEM
         cv2.destroyAllWindows()
     except Exception as ex:
-        print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
+        print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
 
 
 def view_rotations_image(image):
@@ -99,4 +99,4 @@ def view_rotations_image(image):
             image_rotate = np.rot90(image, k)
             view_image(image_rotate)
     except Exception as ex:
-        print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
+        print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))

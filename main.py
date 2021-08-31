@@ -58,4 +58,4 @@ if __name__ == '__main__':
 
 
     except Exception as ex:
-        print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
+        print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))

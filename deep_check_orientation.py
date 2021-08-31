@@ -103,7 +103,7 @@ class check_orientation:
                 x = self.transform(image=np.rot90(image, k))["image"]
                 temp_albu += [tensor_from_rgb_image(x)]
         except Exception as ex:
-            print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
+            print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
 
         return temp_albu
 
@@ -146,7 +146,7 @@ class check_orientation:
             for tx in prediction:
                 prediction_formated.append([round(value, 2) for value in tx])
         except Exception as ex:
-            print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
+            print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
 
         return prediction_formated
 
@@ -173,7 +173,7 @@ class check_orientation:
             rotations = [value[2] for idx, value in enumerate(predictions)].index(
                 max([value[2] for idx, value in enumerate(predictions)])) + 2
         except Exception as ex:
-            print("ERRO NA FUNÇÃO: {} - {}".format(stack[0][3], ex))
+            print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
 
         return rotations
 
