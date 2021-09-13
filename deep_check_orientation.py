@@ -184,6 +184,34 @@ class check_orientation:
 
 
     @staticmethod
+    def get_number_rotations_duplo_check_ocr(predictions):
+
+        """
+
+            OBTÉM O NÚMERO DE ROTAÇÕES NECESSÁRIAS COM BASE NOS RESULTADOS
+            DA FUNÇÃO DE DUPLO CHECK - OCR.
+
+            # Arguments
+                predictions             - Required : Predições para a imagem rotacionada (List)
+
+            # Returns
+                rotations               - Required : Número de rotações necesssárias (Integer)
+
+        """
+
+        # INICIANDO A VARIÁVEL QUE ARMAZENARÁ O NÚMERO DE ROTAÇÕES NECESSÁRIAS
+        rotations = 0
+
+        try:
+            rotations = [value[2] for idx, value in enumerate(predictions)].index(
+                max([value[2] for idx, value in enumerate(predictions)]))
+        except Exception as ex:
+            print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
+
+        return rotations
+
+
+    @staticmethod
     def get_image_correct_orientation(image, rotations):
 
         """
@@ -247,14 +275,16 @@ class check_orientation:
                                                      repl="", string=result)
 
                 print(result)
-                print("TAMANHO ORIGINAL: {}".format(len(result)))
-                print("TAMANHO ORIGINAL: {}".format(len(result_only_letters_numbers)))
+                #print("TAMANHO ORIGINAL: {}".format(len(result)))
+                #print("TAMANHO ORIGINAL: {}".format(len(result_only_letters_numbers)))
 
                 # ARMAZENANDO O RESULTADO DA FUNÇÃO
                 result_duplo_check_ocr.append([k, len(result), len(result_only_letters_numbers)])
 
         except Exception as ex:
             print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
+
+        return result_duplo_check_ocr
 
 
     def orchestra_predictions(self, image):
@@ -275,7 +305,13 @@ class check_orientation:
         if settings.DUPLO_CHECK:
 
             # DUPLA CHECKANDO SE A IMAGEM ESTÁ ROTACIONANDO CORRETAMENTE
-            image_correct_orientation = check_orientation.verified_orientation_duplo_check_ocr(self, image_correct_orientation)
+            predictions = check_orientation.verified_orientation_duplo_check_ocr(self, image_correct_orientation)
+
+            # OBTENDO O NÚMERO DE ROTAÇÕES
+            number_rotate = check_orientation.get_number_rotations_duplo_check_ocr(predictions)
+
+            # ORIENTANDO A IMAGEM CORRETAMENTE
+            image_correct_orientation = check_orientation.get_image_correct_orientation(image, number_rotate)
 
         # RETORNANDO AS PREDICTIONS, NÚMERO DE ROTAÇÕES NECESSÁRIAS
         # E IMAGEM ROTACIONADA CORRETAMENTE

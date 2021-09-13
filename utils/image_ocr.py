@@ -47,7 +47,7 @@ class ocr_functions():
 
     def __init__(self, imagem_aplicar_ocr,
                  lang_padrao = 'por',
-                 config_tesseract = 'tessdata',
+                 config_tesseract = '1',
                  tipo_retorno_ocr_input = "TEXTO"):
 
         # 1 - IMAGEM NO QUAL O OCR SERÁ APLICADO
