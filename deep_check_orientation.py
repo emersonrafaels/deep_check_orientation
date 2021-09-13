@@ -25,6 +25,7 @@ __author__ = """Emerson V. Rafael (EMERVIN)"""
 __data_atualizacao__ = "16/08/2021"
 
 from inspect import stack
+import re
 
 import albumentations as albu
 from check_orientation.pre_trained_models import create_model
@@ -35,6 +36,7 @@ import torch
 
 import utils.image_read as image_read_functions
 import utils.image_view as image_view_functions
+import utils.image_ocr as image_ocr_functions
 
 
 class check_orientation:
@@ -64,15 +66,18 @@ class check_orientation:
 
     def __init__(self):
 
-        # INICIANDO O MODELO (RESNET)
+        # 1 - INICIANDO O MODELO (RESNET)
         self.model = create_model(settings.MODEL_NAME)
         self.model.eval()
 
-        # INICIANDO A INSTÂNCIA DE AUMENTO DE IMAGENS
+        # 2 - INICIANDO A INSTÂNCIA DE AUMENTO DE IMAGENS
         self.transform = albu.Compose([albu.Resize(height=settings.ALBUMENTATIONS_HEIGHT,
                                                    width=settings.ALBUMENTATIONS_WIDHT),
                                        albu.Normalize(p=settings.ALBUMENTATIONS_NORMALIZE)],
-                                      p=settings.ALBUMENTATIONS_NORMALIZE)
+                                       p=settings.ALBUMENTATIONS_NORMALIZE)
+
+        # 3 - DEFININDO O PATTERN PARA APLICAÇÃO DO OCR NA STRING DE DUPLO CHECK
+        self.pattern = r'[^A-zÀ-ú0-9]'
 
 
     def pipeline_augmentation(self, image):
@@ -200,6 +205,58 @@ class check_orientation:
             return image
 
 
+    def verified_orientation_duplo_check_ocr(self, image):
+
+        """
+
+            REALIZA O DUPLO CHECK DA ORIENTAÇÃO DA IMAGEM.
+
+            ESSA FUNÇÃO É EXECUTADO APÓS UMA PRIMEIRA REORIENTAÇÃO DA IMAGEM.
+
+            RECEBE COMO ARGUMENTO A IMAGEM JÁ PRÉ ORIENTADA CORRETAMENTE.
+
+            AS ETAPAS SÃO:
+            1) ROTACIONAR A IMAGEM EM 180°
+            2) PARA CADA ROTAÇÃO, REALIZAR O OCR
+            3) PARA CADA OCR, VERIFICAR A QUANTIDADE DE TEXTO EXTRAÍDO
+
+            # Arguments
+                image                  - Required : Imagem para verificação da orientação (Array)
+
+            # Returns
+                image                  - Required : Imagem orientada corretamente (Array)
+
+        """
+
+        # INICIANDO A VARIÁVEL QUE ARMAZENARÁ OS RESULTADOS DE OCR
+        result_duplo_check_ocr = []
+
+        try:
+            for k in [0, 1, 2, 3]:
+                # ROTACIONANDO A IMAGEM
+                image_rotate = np.rot90(image, k)
+
+                # VISUALIZANDO A IMAGEM ROTACIONADA
+                # image_view_functions.view_image(image_rotate)
+
+                # APLICANDO O OCR NA ROTAÇÃO ATUAL
+                validador, result = image_ocr_functions.ocr_functions(imagem_aplicar_ocr=image_rotate).realizar_ocr(imagem_rgb=image_rotate)
+
+                # APLICANDO A LIMPEZA DO RETORNO DO OCR
+                result_only_letters_numbers = re.sub(pattern=self.pattern,
+                                                     repl="", string=result)
+
+                print(result)
+                print("TAMANHO ORIGINAL: {}".format(len(result)))
+                print("TAMANHO ORIGINAL: {}".format(len(result_only_letters_numbers)))
+
+                # ARMAZENANDO O RESULTADO DA FUNÇÃO
+                result_duplo_check_ocr.append([k, len(result), len(result_only_letters_numbers)])
+
+        except Exception as ex:
+            print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
+
+
     def orchestra_predictions(self, image):
 
         # REALIZANDO O AUMENTO DAS IMAGENS (AUGMENTATION)
@@ -213,6 +270,12 @@ class check_orientation:
 
         # ORIENTANDO A IMAGEM CORRETAMENTE
         image_correct_orientation = check_orientation.get_image_correct_orientation(image, number_rotate)
+
+        # VERIFICANDO SE A OPÇÃO DE DUPLO CHECK ESTÁ CONFIGURADA COMO TRUE
+        if settings.DUPLO_CHECK:
+
+            # DUPLA CHECKANDO SE A IMAGEM ESTÁ ROTACIONANDO CORRETAMENTE
+            image_correct_orientation = check_orientation.verified_orientation_duplo_check_ocr(self, image_correct_orientation)
 
         # RETORNANDO AS PREDICTIONS, NÚMERO DE ROTAÇÕES NECESSÁRIAS
         # E IMAGEM ROTACIONADA CORRETAMENTE

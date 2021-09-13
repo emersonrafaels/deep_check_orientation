@@ -1,3 +1,6 @@
+default:
+  DUPLO_CHECK: True
+
 production:
   MODEL_NAME: swsl_resnext50_32x4d
   ALBUMENTATIONS_HEIGHT: 224

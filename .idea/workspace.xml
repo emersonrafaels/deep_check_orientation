@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="68d813e9-28ec-47b6-8910-9d7190a2a3a4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deep_check_orientation.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_check_orientation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/settings.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/image_read.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/image_read.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,26 +18,59 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deep_check_orientation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+            <state relative-caret-position="116">
+              <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/deep_check_orientation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="252" column="51" lean-forward="true" selection-start-line="252" selection-start-column="51" selection-end-line="252" selection-end-column="51" />
+              <folding>
+                <element signature="e#1140#1165#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/image_ocr.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="313" column="20" selection-start-line="313" selection-start-column="8" selection-end-line="313" selection-end-column="20" />
+              <folding>
+                <element signature="e#463#473#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/generic_functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/image_view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-253">
-              <caret line="47" column="64" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="64" />
+            <state relative-caret-position="134">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
               <folding>
                 <element signature="e#284#309#0" expanded="true" />
               </folding>
@@ -43,22 +79,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/image_read.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="40" column="64" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="64" />
-              <folding>
-                <element signature="e#279#304#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/image_convert_format.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="272">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="e#490#503#0" expanded="true" />
               </folding>
@@ -75,6 +99,19 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>generic_functions</find>
+      <find>image_view</find>
+      <find>get_number_rotations</find>
+      <find>pattern</find>
+      <find>stack</find>
+      <find>verified_orientation_duplo_check_ocr</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>stack()</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -86,13 +123,16 @@
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/utils/teste.py" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/settings.yaml" />
         <option value="$PROJECT_DIR$/.secrets.yaml" />
-        <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/deep_check_orientation.py" />
         <option value="$PROJECT_DIR$/utils/image_view.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/utils/image_read.py" />
+        <option value="$PROJECT_DIR$/utils/ocr_osd_string.py" />
+        <option value="$PROJECT_DIR$/utils/image_ocr.py" />
+        <option value="$PROJECT_DIR$/utils/generic_functions.py" />
         <option value="$PROJECT_DIR$/utils/image_convert_format.py" />
+        <option value="$PROJECT_DIR$/settings.yaml" />
+        <option value="$PROJECT_DIR$/deep_check_orientation.py" />
       </list>
     </option>
   </component>
@@ -105,6 +145,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -121,7 +162,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -129,10 +169,11 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Emerson\Desktop\UFABC\Cursos\Python\OPENCV\BRAINIACS_OPENCV\UTILS\deep_check_orientation" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Emerson\Desktop\UFABC\Cursos\Python\OPENCV\BRAINIACS_OPENCV\UTILS\deep_check_orientation\utils" />
       <recent name="C:\Users\Emerson\Desktop\UFABC\Cursos\Python\OPENCV\BRAINIACS_OPENCV\UTILS\deep_check_orientation" />
     </key>
   </component>
@@ -183,7 +224,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="&quot;C:\Users\Emerson\Desktop\UFABC\Cursos\Python\OPENCV\RG\allPd.jpg&quot;" />
+      <option name="PARAMETERS" value="&quot;C:\Users\Emerson\Desktop\CNH-falsa-Manaus.jpeg&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -242,9 +283,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.deep_check_orientation" />
         <item itemvalue="Python.teste" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.deep_check_orientation" />
       </list>
     </recent_temporary>
   </component>
@@ -262,21 +303,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.35098335" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2473525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32843137" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49546143" weight="0.37091503" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49621785" weight="0.35947713" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49546143" weight="0.29248366" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49621785" visible="true" weight="0.29575163" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27941176" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.27941176" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5045386" side_tool="true" weight="0.25490198" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32843137" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -291,23 +332,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
           <line>56</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/utils/image_view.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/deep_check_orientation.py</url>
+          <line>242</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/deep_check_orientation.py</url>
-          <line>227</line>
-          <option name="timeStamp" value="13" />
+          <line>274</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -348,13 +384,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/teste.py" />
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="29" lean-forward="true" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-640942593/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -376,53 +405,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.yaml">
+    <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deep_check_orientation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/image_convert_format.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#490#503#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="29" lean-forward="true" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/image_read.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="40" column="64" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="64" />
+        <state relative-caret-position="1547">
+          <caret line="96" column="48" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
           <folding>
             <element signature="e#279#304#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utils/generic_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/image_convert_format.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#490#503#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils/image_view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-253">
-          <caret line="47" column="64" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="64" />
+        <state relative-caret-position="134">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
           <folding>
             <element signature="e#284#309#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/image_ocr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="313" column="20" selection-start-line="313" selection-start-column="8" selection-end-line="313" selection-end-column="20" />
+          <folding>
+            <element signature="e#463#473#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deep_check_orientation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="252" column="51" lean-forward="true" selection-start-line="252" selection-start-column="51" selection-end-line="252" selection-end-column="51" />
+          <folding>
+            <element signature="e#1140#1165#0" expanded="true" />
           </folding>
         </state>
       </provider>
