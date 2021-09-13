@@ -79,6 +79,7 @@ class ocr_functions():
 
             # Arguments
                 imagem_para_conversao_rgb        - Required : Imagem para aplicação da conversão (Object)
+
             # Returns
                 validador                        - Required : Validador de execução da função (Boolean)
                 rgb                              - Required : Imagem após conversãO RGB (Object)
@@ -189,6 +190,7 @@ class ocr_functions():
 
             # Arguments
                 caminho_imagem_atual        - Required : Caminho da imagem atual (String)
+
             # Returns
                 validador                   - Required : Validador de execução da função (Boolean)
                 valor_orientacao            - Required : Propriedades de orientação da imagem (String)
@@ -242,6 +244,7 @@ class ocr_functions():
 
             # Arguments
                 imagem_rgb                  - Required : Imagem para aplicação do ocr (Object)
+
             # Returns
                 validador                   - Required : Validador de execução da função (Boolean)
                 infos_ocr                   - Required : Informações obtidas no OCR (Dict)
@@ -322,6 +325,7 @@ class ocr_functions():
 
             # Arguments
                 imagem_rgb                  - Required : Imagem para aplicação do ocr (Object)
+
             # Returns
                 validador                   - Required : Validador de execução da função (Boolean)
                 texto                       - Required : Texto obtido (String)
@@ -370,6 +374,7 @@ class ocr_functions():
 
             # Arguments
                 imagem_rgb                  - Required : Imagem para aplicação do ocr (Object)
+
             # Returns
                 validador                   - Required : Validador de execução da função (Boolean)
                 retorno_ocr                 - Required : Retorno do OCR (String | Dict)
