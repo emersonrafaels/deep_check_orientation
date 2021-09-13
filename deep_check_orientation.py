@@ -34,9 +34,11 @@ from iglovikov_helper_functions.dl.pytorch.utils import tensor_from_rgb_image
 import numpy as np
 import torch
 
+from utils.generic_functions import generic_functions
 import utils.image_read as image_read_functions
 import utils.image_view as image_view_functions
 import utils.image_ocr as image_ocr_functions
+from utils.model_words import Model_Words
 
 
 class check_orientation:
@@ -233,6 +235,27 @@ class check_orientation:
             return image
 
 
+    def get_stop_words(self):
+
+        """
+
+            OBTÉM AS AS STOP WORDS.
+
+            AS STOP WORDS SÃO USADAS PARA VERIFICAR AS PALAVRAS OBTIDAS NO OCR
+
+            # Arguments
+
+            # Returns
+                result_list_stop_words             - Required : Lista das Stop Words (List)
+
+        """
+
+        # OBTENDO A LISTA DE STOP WORDS
+        result_list_stop_words = Model_Words().orchestra_model_words()
+
+        return result_list_stop_words
+
+
     def verified_orientation_duplo_check_ocr(self, image):
 
         """
@@ -259,6 +282,9 @@ class check_orientation:
         # INICIANDO A VARIÁVEL QUE ARMAZENARÁ OS RESULTADOS DE OCR
         result_duplo_check_ocr = []
 
+        # OBTENDO A LISTA DE STOP WORDS
+        result_list_stop_words = check_orientation.get_stop_words()
+
         try:
             for k in [0, 1, 2, 3]:
                 # ROTACIONANDO A IMAGEM
@@ -274,12 +300,17 @@ class check_orientation:
                 result_only_letters_numbers = re.sub(pattern=self.pattern,
                                                      repl="", string=result)
 
+                # INTERSECCIONANDO O REGEX E AS STOP WORDS
+                # PARA OBTER APENAS PALAVRAS VÁLIDAS
+                result_only_letters_numbers_intersecction_stop_words = generic_functions(result_list_stop_words,
+                                                                                         result_only_letters_numbers)
+
                 print(result)
                 #print("TAMANHO ORIGINAL: {}".format(len(result)))
                 #print("TAMANHO ORIGINAL: {}".format(len(result_only_letters_numbers)))
 
                 # ARMAZENANDO O RESULTADO DA FUNÇÃO
-                result_duplo_check_ocr.append([k, len(result), len(result_only_letters_numbers)])
+                result_duplo_check_ocr.append([k, len(result), len(result_only_letters_numbers_intersecction_stop_words)])
 
         except Exception as ex:
             print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
@@ -312,6 +343,7 @@ class check_orientation:
 
             # ORIENTANDO A IMAGEM CORRETAMENTE
             image_correct_orientation = check_orientation.get_image_correct_orientation(image, number_rotate)
+
 
         # RETORNANDO AS PREDICTIONS, NÚMERO DE ROTAÇÕES NECESSÁRIAS
         # E IMAGEM ROTACIONADA CORRETAMENTE
