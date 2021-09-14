@@ -19,9 +19,10 @@ __author__ = """Emerson V. Rafael (EMERVIN)"""
 __data_atualizacao__ = "03/07/2021"
 
 from inspect import stack
-from os import path
+from os import getcwd, path
 
 from dynaconf import settings
+
 
 class Model_Words():
 
@@ -44,7 +45,7 @@ class Model_Words():
         """
 
         # 1 - DEFININDO O LOCAL CONTENDO O ARQUIVO DE STOP WORDS
-        self.dir_path_words = path.join(path.abspath(r".."), settings.DIR_MODEL_WORDS)
+        self.dir_path_words = path.join(getcwd(), settings.DIR_MODEL_WORDS)
 
 
     @staticmethod

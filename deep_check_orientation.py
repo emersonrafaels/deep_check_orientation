@@ -235,7 +235,8 @@ class check_orientation:
             return image
 
 
-    def get_stop_words(self):
+    @staticmethod
+    def get_stop_words():
 
         """
 
