@@ -298,13 +298,15 @@ class check_orientation:
                 validador, result = image_ocr_functions.ocr_functions(imagem_aplicar_ocr=image_rotate).realizar_ocr(imagem_rgb=image_rotate)
 
                 # APLICANDO A LIMPEZA DO RETORNO DO OCR
-                result_only_letters_numbers = re.sub(pattern=self.pattern,
-                                                     repl="", string=result)
+                result_only_letters_numbers = generic_functions.remove_list_value_none(re.sub(pattern=self.pattern,
+                                                                                              repl=" ", string=result))
+
+
 
                 # INTERSECCIONANDO O REGEX E AS STOP WORDS
                 # PARA OBTER APENAS PALAVRAS VÁLIDAS
-                result_only_letters_numbers_intersecction_stop_words = generic_functions(result_list_stop_words,
-                                                                                         result_only_letters_numbers)
+                result_only_letters_numbers_intersecction_stop_words = generic_functions.get_list_intersecction(generic_functions.convert_list_lower_case(result_list_stop_words),
+                                                                                                                generic_functions.convert_list_lower_case(result_only_letters_numbers))
 
                 print(result)
                 #print("TAMANHO ORIGINAL: {}".format(len(result)))

@@ -56,6 +56,5 @@ if __name__ == '__main__':
         # VISUALIZANDO A IMAGEM ROTACIONADA CORRETAMENTE
         view_image(image_correct_orientation, window_name="IMAGEM ROTACIONADA")
 
-
     except Exception as ex:
         print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
