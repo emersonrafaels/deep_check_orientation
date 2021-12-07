@@ -21,14 +21,14 @@ from PIL import Image
 from iglovikov_helper_functions.utils.image_utils import load_rgb
 
 
-def read_image_rgb(caminho_imagem):
+def read_image_rgb(input_image):
 
     """
 
         FUNÇÃO PARA LEITURA DE UMA IMAGEM.
 
         # Arguments
-            caminho_imagem       - Required : Caminho da imagem a ser lida (String)
+            input_image          - Required : Caminho da imagem a ser lida (String)
         # Returns
             img                  - Required : Imagem após leitura (Array)
 
@@ -39,21 +39,21 @@ def read_image_rgb(caminho_imagem):
 
     try:
         # A LEITURA É FEITA EM FORMATO RGB
-        img = load_rgb(caminho_imagem)
+        img = load_rgb(input_image)
     except Exception as ex:
         print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
 
     return img
 
 
-def realiza_leitura_imagem(caminho_imagem):
+def realiza_leitura_imagem(input_image):
 
     """
 
         FUNÇÃO PARA LEITURA DE UMA IMAGEM.
 
         # Arguments
-            caminho_imagem       - Required : Caminho da imagem a ser lida (String)
+            input_image          - Required : Caminho da imagem a ser lida (String)
         # Returns
             img                  - Required : Imagem após leitura (Object)
 
@@ -65,14 +65,14 @@ def realiza_leitura_imagem(caminho_imagem):
     try:
         # UTILIZANDO O OPENCV PARA LEITURA DA IMAGEM
         # A LEITURA É FEITA EM FORMATO BGR
-        img = cv2.imread(caminho_imagem)
+        img = cv2.imread(input_image)
     except Exception as ex:
         print(ex)
 
     return img
 
 
-def realiza_leitura_imagem_pillow(caminho_imagem):
+def realiza_leitura_imagem_pillow(input_image):
 
     """
 
@@ -80,7 +80,7 @@ def realiza_leitura_imagem_pillow(caminho_imagem):
         UTILIZA PIL - IMAGE
 
         # Arguments
-            caminho_imagem       - Required : Caminho da imagem a ser lida (String)
+            input_image          - Required : Caminho da imagem a ser lida (String)
         # Returns
             img                  - Required : Imagem após leitura (Object)
 
@@ -92,7 +92,7 @@ def realiza_leitura_imagem_pillow(caminho_imagem):
     try:
         # UTILIZANDO O PILLOW PARA LEITURA DA IMAGEM
         # A LEITURA É FEITA EM FORMATO RGB
-        img = Image.open(caminho_imagem)
+        img = Image.open(input_image)
     except Exception as ex:
         print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
 
