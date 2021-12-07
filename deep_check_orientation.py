@@ -366,4 +366,7 @@ class check_orientation:
         # OBTENDO AS PREDIÇÕES DO MODELO
         predictions, number_rotate, image_correct_orientation = check_orientation.orchestra_predictions(self, image)
 
+        # VISUALIZANDO A IMAGEM ROTACIONADA CORRETAMENTE
+        image_view_functions.view_image(image_correct_orientation, window_name="IMAGEM ROTACIONADA")
+
         return predictions, number_rotate, image_correct_orientation
