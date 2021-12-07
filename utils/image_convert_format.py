@@ -23,6 +23,33 @@ import io
 import numpy as np
 from PIL import Image
 
+from iglovikov_helper_functions.utils.image_utils import load_rgb
+
+
+def read_image_rgb(input_image):
+
+    """
+
+        FUNÇÃO PARA LEITURA DE UMA IMAGEM.
+
+        # Arguments
+            input_image          - Required : Caminho da imagem a ser lida (String)
+        # Returns
+            img                  - Required : Imagem após leitura (Array)
+
+    """
+
+    # INICIANDO O OBJETO DA IMAGEM
+    img = None
+
+    try:
+        # A LEITURA É FEITA EM FORMATO RGB
+        img = load_rgb(input_image)
+    except Exception as ex:
+        print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
+
+    return img
+
 
 def open_image_pil(imagem):
 
@@ -172,7 +199,7 @@ def str_to_base64(imagem):
     return img_base64
 
 
-def convert_image(imagem):
+def convert_image(image):
 
     """
 
@@ -181,7 +208,7 @@ def convert_image(imagem):
         A IMAGEM ORIGINAL PODE ESTAR EM FORMATOS: BASE64, STR, ARRAY, FORMATO DE IMAGEM (PIL)
 
         # Arguments
-            imagem                 - Required : Imagem que será convertida.
+            image                  - Required : Imagem que será convertida.
                                                 A imagem pode estar em formato PIL,
                                                 array, base64 ou string (PIL | Array | Base64 | String)
             nome_imagem            - Required : Nome da imagem (String)
@@ -196,12 +223,12 @@ def convert_image(imagem):
         # REALIZANDO A ABERTURA DA IMAGEM
         img_pil = "null"
 
-        if type(imagem) == bytes:
+        if type(image) == bytes:
 
             # COMO A BASE ESTÁ EM BASE64, ELA SERÁ DECODIFICADA
-            img_pil = base64_to_pil(imagem)
+            img_pil = base64_to_pil(image)
 
-        elif type(imagem) == str:
+        elif type(image) == str:
 
             # FOI ENVIADO O CAMINHO DA IMAGEM, ELA SERÁ ABERTA COM O OPENCV
             img_pil = read_image_rgb(image)
@@ -212,6 +239,10 @@ def convert_image(imagem):
                 ENCODAMOS DE STRING PARA BASE64 E ABRIMOS USANDO (PIL)
                 USANDO A FUNÇÃO BASE64_TO_PIL
             """
+
+        else:
+            # RETORNANDO A IMAGEM CONFORME INPUT
+            img_result = image
 
     except Exception as ex:
         print("ERRO NA FUNÇÃO: {} - {}".format(stack()[0][3], ex))
