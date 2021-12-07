@@ -46,7 +46,7 @@ def read_image_rgb(input_image):
     return img
 
 
-def realiza_leitura_imagem(input_image):
+def read_image(input_image):
 
     """
 
@@ -72,7 +72,7 @@ def realiza_leitura_imagem(input_image):
     return img
 
 
-def realiza_leitura_imagem_pillow(input_image):
+def read_image_pillow(input_image):
 
     """
 
