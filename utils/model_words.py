@@ -23,6 +23,8 @@ from os import getcwd, path
 
 from dynaconf import settings
 
+from CONFIG import config
+
 
 class Model_Words():
 
@@ -122,7 +124,7 @@ class Model_Words():
         result_model_words = []
 
         palavras = set()
-        with open(self.dir_path_words, encoding='utf-8') as db_words:
+        with open(config.DIR_MODEL_WORDS, encoding='utf-8') as db_words:
             for i, linha in enumerate(db_words):
                 if i != 0 and linha != None:
                     result_model_words.append(linha)

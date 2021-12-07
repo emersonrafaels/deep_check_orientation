@@ -3,6 +3,4 @@
 .secrets.*
 
 .idea/*
-__pycache__/*
-utils/.idea/*
-utils/__pycache__/*
+__pycache__/

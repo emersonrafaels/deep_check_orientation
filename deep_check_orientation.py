@@ -308,8 +308,8 @@ class check_orientation:
                 result_only_letters_numbers_intersecction_stop_words = generic_functions.get_list_intersecction(generic_functions.convert_list_lower_case(result_list_stop_words),
                                                                                                                 generic_functions.convert_list_lower_case(result_only_letters_numbers))
 
-                print(result_only_letters_numbers_intersecction_stop_words)
-                print("-"*50)
+                #print(result_only_letters_numbers_intersecction_stop_words)
+                #print("-"*50)
 
                 # ARMAZENANDO O RESULTADO DA FUNÇÃO
                 result_duplo_check_ocr.append([k, len(result), len(result_only_letters_numbers_intersecction_stop_words)])

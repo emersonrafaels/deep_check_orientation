@@ -1,5 +1,5 @@
 default:
-  DUPLO_CHECK: True
+  DUPLO_CHECK: False
   DIR_MODEL_WORDS: model_words\por_words.txt
   MODEL_NAME: swsl_resnext50_32x4d
   ALBUMENTATIONS_HEIGHT: 224
