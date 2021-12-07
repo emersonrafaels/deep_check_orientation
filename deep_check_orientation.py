@@ -355,7 +355,7 @@ class check_orientation:
     def orchesta_model(self, imagem):
 
         # REALIZANDO A LEITURA DA IMAGEM
-        image = image_read_functions.read_image_rgb(imagem)
+        image = image_read_functions.orchestra_read_image(imagem)
 
         # VISUALIZANDO A IMAGEM
         image_view_functions.view_image(image, window_name="IMAGEM ORIGINAL")
