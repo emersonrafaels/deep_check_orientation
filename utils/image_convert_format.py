@@ -204,6 +204,7 @@ def convert_image(imagem):
         elif type(imagem) == str:
 
             # FOI ENVIADO O CAMINHO DA IMAGEM, ELA SERÁ ABERTA COM O OPENCV
+            img_pil = read_image_rgb(image)
 
             """ 
                 NA CHAMADA DO SERVIÇO, A IMAGEM EM BASE64 É CONVERTIDA PARA
